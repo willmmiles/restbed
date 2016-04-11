@@ -59,6 +59,8 @@ namespace restbed
                 //Constructors
                 ServiceImpl( void );
                 
+                ServiceImpl( const std::shared_ptr< asio::io_service >& io_service );
+
                 virtual ~ServiceImpl( void );
                 
                 //Functionality

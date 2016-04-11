@@ -64,6 +64,11 @@ namespace restbed
         return;
     }
     
+    Service::Service ( const std::shared_ptr< asio::io_service >& io_service ) : m_pimpl( new ServiceImpl(io_service) )
+    {
+        return;        
+    }        
+
     Service::~Service( void )
     {
         try

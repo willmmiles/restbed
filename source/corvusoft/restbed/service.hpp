@@ -16,6 +16,9 @@
 //Project Includes
 
 //External Includes
+#ifdef RESTBED_EXTERNAL_ASIO
+#include <asio/io_service.hpp>
+#endif /* RESTBED_EXTERNAL_ASIO */
 
 //System Namespaces
 
@@ -48,7 +51,11 @@ namespace restbed
             
             //Constructors
             Service( void );
-            
+
+#ifdef RESTBED_EXTERNAL_ASIO            
+            Service ( const std::shared_ptr< asio::io_service >& io_service );
+#endif /* RESTBED_EXTERNAL_ASIO */
+
             virtual ~Service( void );
             
             //Functionality

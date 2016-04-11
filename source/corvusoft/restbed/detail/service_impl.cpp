@@ -101,7 +101,36 @@ namespace restbed
         {
             return;
         }
-        
+
+        ServiceImpl::ServiceImpl( const std::shared_ptr< asio::io_service >& io_service ) : m_is_running( false ),
+            m_logger( nullptr ),
+            m_supported_methods( ),
+            m_settings( nullptr ),
+            m_io_service( io_service ),
+            m_signal_set( nullptr ),
+            m_session_manager( nullptr ),
+            m_rules( ),
+            m_workers( ),
+#ifdef BUILD_SSL
+            m_ssl_settings( nullptr ),
+            m_ssl_context( nullptr ),
+            m_ssl_acceptor( nullptr ),
+#endif
+            m_acceptor( nullptr ),
+            m_resource_paths( ),
+            m_resource_routes( ),
+            m_ready_handler( nullptr ),
+            m_signal_handlers( ),
+            m_not_found_handler( nullptr ),
+            m_method_not_allowed_handler( nullptr ),
+            m_method_not_implemented_handler( nullptr ),
+            m_failed_filter_validation_handler( nullptr ),
+            m_error_handler( ServiceImpl::default_error_handler ),
+            m_authentication_handler( nullptr )
+        {
+            return;
+        }
+
         ServiceImpl::~ServiceImpl( void )
         {
             return;

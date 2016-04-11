@@ -42,6 +42,8 @@ else ( )
     message( FATAL_ERROR "Compiler not supported.")
 endif ( )
 
+add_definitions( -DRESTBED_EXTERNAL_ASIO=TRUE )
+
 if( NOT WIN32 )
     if ( CMAKE_BUILD_TYPE MATCHES Debug )
         set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g -O0 -Wall -Wextra -Weffc++ -pedantic -Wno-unknown-pragmas" )
